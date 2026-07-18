@@ -2,6 +2,7 @@
 #include <unistd.h>
 
 int	parse_input(char *str, int *clues);
+int	check_sudoku(int grid[4][4], int pos);
 
 int	main(int argc, char **argv)
 {
