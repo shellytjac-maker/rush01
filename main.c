@@ -1,18 +1,21 @@
 #include <stdio.h>
-#include <unistd.h>
 
-int	parse_input(char *str, int *clues);
-int	check_sudoku(int grid[4][4], int pos);
+int	parse_clue(int clue[16], int argc, char *argv[]);
+int	validate(int grid[4][4], int pos, int clue[16]);
+void	print_grid(int grid[4][4]);
 
-int	main(int argc, char **argv)
+int	main(int argc, char *argv[])
 {
-	int	clues[16];
+	int	clue[16];
 	int	grid[4][4] = {0};
 
-	if (argc == 2)
+	if (!parse_clue(clue, argc, argv))
 	{
-		parse_input(argv[1], clues);
-		printf(" %ls", clues);
+		return (1);
+	}
+	if (validate(grid, 0, clue))
+	{
+		print_grid(grid);
 	}
 	return (0);
 }
