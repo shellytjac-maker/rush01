@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int	sudoku_check(int num, int grid[4][4], int pos)
+int	check_sudoku(int num, int grid[4][4], int pos)
 {
 	int	i;
 	int	row;

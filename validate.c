@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int	sudoku_check(int num, int grid[4][4], int pos);
+int	check_sudoku(int num, int grid[4][4], int pos);
 int	row_check(int grid[4][4], int row, int left_target, int right_target);
 int	col_check(int grid[4][4], int col, int top_traget, int bot_traget);
 
@@ -18,7 +18,7 @@ int	validate(int grid[4][4], int pos, int clue[16])
 	num = 1;
 	while (num <= 4)
 	{
-		if (sudoku_check(num, grid, pos))
+		if (check_sudoku(num, grid, pos))
 		{
 			grid[row][col] = num;
 			valid = 1;
