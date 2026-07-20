@@ -15,14 +15,12 @@ int	main(int argc, char *argv[])
 	clue = malloc(sizeof(int) * 16);
 	if (!clue)
 	{
-		printf("Error\n");
 		return (1);
 	}
 	grid = malloc(sizeof(int *) * 4);
 	if (!grid)
 	{
 		free(clue);
-		printf("Error\n");
 		return (1);
 	}
 	i = 0;
@@ -38,7 +36,6 @@ int	main(int argc, char *argv[])
 			}
 			free(grid);
 			free(clue);
-			printf("Error\n");
 			return (1);
 		}
 		grid[i][0] = 0;
@@ -47,11 +44,10 @@ int	main(int argc, char *argv[])
 		grid[i][3] = 0;
 		i++;
 	}
-	
+
 	status = 0;
 	if (!parse_clue(clue, argc, argv))
 	{
-		printf("Error\n");
 		status = 1;
 	}
 	else if (validate(grid, 0, clue))
@@ -60,7 +56,6 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-		printf("Error\n");
 		status = 1;
 	}
 	i = 0;
