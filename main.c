@@ -6,7 +6,7 @@
 /*   By: htaung <htaung@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 11:30:28 by htaung            #+#    #+#             */
-/*   Updated: 2026/07/20 11:30:48 by htaung           ###   ########.fr       */
+/*   Updated: 2026/07/20 12:08:41 by htaung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,65 +17,63 @@ int		parse_clue(int *clue, int argc, char *argv[]);
 int		validate(int **grid, int pos, int *clue);
 void	print_grid(int **grid);
 
+void	free_all(int **grid, int *clue, int size)
+{
+	int	i;
+
+	if (grid)
+	{
+		i = -1;
+		while (++i < size)
+			free(grid[i]);
+		free(grid);
+	}
+	if (clue)
+		free(clue);
+}
+
+int	**init_grid(void)
+{
+	int	**g;
+	int	i;
+	int	j;
+
+	g = malloc(sizeof(int *) * 4);
+	if (!g)
+		return (0);
+	i = -1;
+	while (++i < 4)
+	{
+		g[i] = malloc(sizeof(int) * 4);
+		if (!g[i])
+		{
+			free_all(g, 0, i);
+			return (0);
+		}
+		j = -1;
+		while (++j < 4)
+			g[i][j] = 0;
+	}
+	return (g);
+}
+
 int	main(int argc, char *argv[])
 {
 	int	*clue;
 	int	**grid;
-	int	i;
 	int	status;
 
+	status = 1;
 	clue = malloc(sizeof(int) * 16);
-	if (!clue)
+	grid = init_grid();
+	if (clue && grid)
 	{
-		return (1);
-	}
-	grid = malloc(sizeof(int *) * 4);
-	if (!grid)
-	{
-		free(clue);
-		return (1);
-	}
-	i = 0;
-	while (i < 4)
-	{
-		grid[i] = malloc(sizeof(int) * 4);
-		if (!grid[i])
+		if (parse_clue(clue, argc, argv) && validate(grid, 0, clue))
 		{
-			while (i > 0)
-			{
-				i--;
-				free(grid[i]);
-			}
-			free(grid);
-			free(clue);
-			return (1);
+			print_grid(grid);
+			status = 0;
 		}
-		grid[i][0] = 0;
-		grid[i][1] = 0;
-		grid[i][2] = 0;
-		grid[i][3] = 0;
-		i++;
 	}
-	status = 0;
-	if (!parse_clue(clue, argc, argv))
-	{
-		status = 1;
-	}
-	else if (validate(grid, 0, clue))
-	{
-		print_grid(grid);
-	}
-	else
-	{
-		status = 1;
-	}
-	i = 0;
-	while (i < 4)
-	{
-		free(grid[i]);
-		i++;
-	}
-	free(grid);
-	free(clue);
+	free_all(grid, clue, 4);
 	return (status);
 }
