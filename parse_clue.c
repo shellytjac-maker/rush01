@@ -1,4 +1,4 @@
-int	parse_clue(int clue[16], int argc, char *argv[])
+int	parse_clue(int *clue, int argc, char *argv[])
 {
 	int	i;
 	int	j;

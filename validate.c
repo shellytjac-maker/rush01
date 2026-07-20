@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-int	check_sudoku(int num, int grid[4][4], int pos);
-int	row_check(int grid[4][4], int row, int left_target, int right_target);
-int	col_check(int grid[4][4], int col, int top_traget, int bot_traget);
+int	check_sudoku(int num, int **grid, int pos);
+int	row_check(int **grid, int row, int left_target, int right_target);
+int	col_check(int **grid, int col, int top_traget, int bot_traget);
 
-int	validate(int grid[4][4], int pos, int clue[16])
+int	validate(int **grid, int pos, int *clue)
 {
 	int	row;
 	int	col;

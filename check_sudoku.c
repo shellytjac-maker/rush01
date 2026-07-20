@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int	check_sudoku(int num, int grid[4][4], int pos)
+int	check_sudoku(int num, int **grid, int pos)
 {
 	int	i;
 	int	row;

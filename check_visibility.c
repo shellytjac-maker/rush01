@@ -31,7 +31,7 @@ int	count_visible(int line[4])
 	return (count);
 }
 
-int	row_check(int grid[4][4], int row, int left_target, int right_target)
+int	row_check(int **grid, int row, int left_target, int right_target)
 {
 	int	line[4];
 	int	reversed_line[4];
@@ -60,7 +60,7 @@ int	row_check(int grid[4][4], int row, int left_target, int right_target)
 	return (1);
 }
 
-int	col_check(int grid[4][4], int col, int top_traget, int bot_traget)
+int	col_check(int **grid, int col, int top_traget, int bot_traget)
 {
 	int	line[4];
 	int	reversed_col[4];
