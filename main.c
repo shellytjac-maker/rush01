@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: htaung <htaung@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/20 11:30:28 by htaung            #+#    #+#             */
+/*   Updated: 2026/07/20 11:30:48 by htaung           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 
-int	parse_clue(int *clue, int argc, char *argv[]);
-int	validate(int **grid, int pos, int *clue);
+int		parse_clue(int *clue, int argc, char *argv[]);
+int		validate(int **grid, int pos, int *clue);
 void	print_grid(int **grid);
 
 int	main(int argc, char *argv[])
@@ -44,7 +56,6 @@ int	main(int argc, char *argv[])
 		grid[i][3] = 0;
 		i++;
 	}
-
 	status = 0;
 	if (!parse_clue(clue, argc, argv))
 	{
