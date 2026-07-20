@@ -47,6 +47,7 @@ int	main(int argc, char *argv[])
 		grid[i][3] = 0;
 		i++;
 	}
+	
 	status = 0;
 	if (!parse_clue(clue, argc, argv))
 	{

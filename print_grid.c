@@ -1,9 +1,10 @@
-#include <stdio.h>
+#include <unistd.h>
 
 void	print_grid(int **grid)
 {
 	int	r;
 	int	c;
+	char	ch;
 
 	r = 0;
 	while (r < 4)
@@ -11,12 +12,13 @@ void	print_grid(int **grid)
 		c = 0;
 		while (c < 4)
 		{
-			printf("%d", grid[r][c]);
+			ch = grid[r][c] + '0';
+			write(1, &ch, 1);
 			if (c < 3)
-				printf(" ");
+				write(1, " ", 1);
 			c++;
 		}
-		printf("\n");
+		write(1, "\n", 1);
 		r++;
 	}
 }
